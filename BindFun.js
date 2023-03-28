@@ -15,5 +15,11 @@ const myMan={
   name:'rishi'
 }
 
+const myWomen={
+  name:'Nupur'
+}
+
 let tempFun = getName.myBind(myMan);
-tempFun();
+tempFun.call(myWomen);
+
+//so bounded function never changes its loyalty once created using bind.

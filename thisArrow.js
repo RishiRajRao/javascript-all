@@ -16,3 +16,5 @@ function findName(name){
 // }
 const p1 = findName('Rishi')
 p1.display()
+
+//Hence, arrow function always look for 'this' in the outer context.
