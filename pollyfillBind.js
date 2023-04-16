@@ -1,5 +1,6 @@
 // let tempFun = fun.bind(obj,val1,val2,....);
 Function.prototype.myBind = function (obj, ...args) {
+  console.log("this==",this)
   return (...newArgs) => this.apply(obj, [...args, ...newArgs]);
 };
 // Function.prototype.myBind = function(args){
@@ -20,6 +21,6 @@ const myWomen={
 }
 
 let tempFun = getName.myBind(myMan);
-tempFun.call(myWomen);
+tempFun()
 
 //so bounded function never changes its loyalty once created using bind.

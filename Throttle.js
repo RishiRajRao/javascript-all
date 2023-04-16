@@ -1,12 +1,12 @@
 //basicaal throttle a function with wait and cb. If wait true, please with untill wait is false.Oterwise call cb and wait till settimeout expire.
 const _throttle = (cb,d) => {
-  let isWait ;
+  let isOnHold ;
   return function(...args){
-    if(isWait) return;
+    if(isOnHold) return;
     cb(...args);
-    isWait = true;
+    isOnHold = true;
     setTimeout(() => {
-      isWait = false
+      isOnHold = false
     }, d)
   }
 }
