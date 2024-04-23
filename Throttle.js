@@ -1,12 +1,20 @@
-//basicaal throttle a function with wait and cb. If wait true, please with untill wait is false.Oterwise call cb and wait till settimeout expire.
-const _throttle = (cb,d) => {
-  let isOnHold ;
-  return function(...args){
-    if(isOnHold) return;
-    cb(...args);
-    isOnHold = true;
-    setTimeout(() => {
-      isOnHold = false
-    }, d)
-  }
-}
+const _throttle = (cb, delay) => {
+  let isTimer = false;
+  return (val) => {
+    if (isTimer) return;
+    else {
+      isTimer = true;
+      cb(val);
+      setTimeout(() => (isTimer = false), delay);
+    }
+  };
+};
+
+const printLog = (val) => console.log("val", val);
+
+const _throttlePrint = _throttle(printLog, 10);
+_throttlePrint(10);
+_throttlePrint(20);
+_throttlePrint(30);
+_throttlePrint(40);
+_throttlePrint(50);
